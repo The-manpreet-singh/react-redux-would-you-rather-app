@@ -19,6 +19,15 @@ export function addQuestion(question) {
 	};
 }
 
+export function addQuestionAnswer(authedUser, qid, answer) {
+	return {
+		type: ADD_QUESTION_ANSWER,
+		authedUser,
+		qid,
+		answer,
+	};
+}
+
 export function handleAddQuestion(optionOneText, optionTwoText) {
 	return (dispatch, getState) => {
 		const { authedUser } = getState();
@@ -32,15 +41,6 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
 		})
 			.then((question) => dispatch(addQuestion(question)))
 			.then(() => dispatch(hideLoading()));
-	};
-}
-
-export function addQuestionAnswer(authedUser, qid, answer) {
-	return {
-		type: ADD_QUESTION_ANSWER,
-		authedUser,
-		qid,
-		answer,
 	};
 }
 
