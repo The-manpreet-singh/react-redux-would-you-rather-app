@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 class Question extends Component {
 	render() {
-		const { question } = this.props;
+		const { question, } = this.props;
 		return (
 			<div>
 				<h5>id: {question.id}</h5>
@@ -16,7 +16,7 @@ class Question extends Component {
 	}
 }
 
-const mapStateToprops = ({ authedUser, users, questions, id }) => {
+const mapStateToprops = ({authedUser,questions},{id}) => {
 	const question = questions[id];
 	return {
 		authedUser,

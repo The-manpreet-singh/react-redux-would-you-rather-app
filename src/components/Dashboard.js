@@ -7,6 +7,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
+import Question from './Question'
+
 class Dashboard extends Component {
 	state = {
 		data: 0,
@@ -41,14 +43,14 @@ class Dashboard extends Component {
 				{data === 0 && (
 					<ul>
 						{this.props.unansweredQuestionIds.map((id) => (
-							<li key={id}>{id}</li>
+							<li key={id}> <Question id={id} /> </li>
 						))}
 					</ul>
 				)}
 				{data === 1 && (
 					<ul>
 						{this.props.answeredQuestionIds.map((id) => (
-							<li key={id}>{id}</li>
+							<li key={id}><Question id={id} /></li>
 						))}
 					</ul>
 				)}
