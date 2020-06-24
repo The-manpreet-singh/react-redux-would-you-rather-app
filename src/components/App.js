@@ -6,6 +6,8 @@ import { handleInitialData } from "../actions/shared";
 
 import Dashboard from "./Dashboard";
 
+import Signin from './Signin'
+
 class App extends Component {
 	componentDidMount() {
 		this.props.dispatch(handleInitialData());
@@ -15,7 +17,7 @@ class App extends Component {
 		return (
 			<div>
 				<h1>Hello im here</h1>
-				{this.props.loading === true ? null : <Dashboard />}
+				{this.props.loading === true ? <Signin /> : <Dashboard />}
 			</div>
 		);
 	}
