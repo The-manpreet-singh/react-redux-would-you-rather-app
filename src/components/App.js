@@ -16,7 +16,6 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<h1>Hello im here</h1>
 				{this.props.loading === true ? <Signin /> : <Dashboard />}
 			</div>
 		);

@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+
 class Dashboard extends Component {
 	state = {
-		data: false,
+		data: 0,
 	};
 
 	changeHandler = (e, data) => {
@@ -12,18 +18,34 @@ class Dashboard extends Component {
 
 	render() {
 		const { data } = this.state;
-		console.log(data);
+
+		//console.log(data);
 		return (
 			<div>
-				<h2>My data</h2>
-				{data === false && (
+				<AppBar position="static">
+					<Toolbar>Dashboard</Toolbar>
+				</AppBar>
+
+				<Tabs
+					value={data}
+					onChange={this.changeHandler}
+					indicatorColor="primary"
+					textColor="primary"
+					centered
+					aria-label="full width tabs example"
+				>
+					<Tab label="Unanswared Questions" />
+					<Tab label="Answared Questions" />
+				</Tabs>
+
+				{data === 0 && (
 					<ul>
 						{this.props.unansweredQuestionIds.map((id) => (
 							<li key={id}>{id}</li>
 						))}
 					</ul>
 				)}
-				{data === true && (
+				{data === 1 && (
 					<ul>
 						{this.props.answeredQuestionIds.map((id) => (
 							<li key={id}>{id}</li>
