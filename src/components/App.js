@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Component } from "react";
 
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div>
-      hello
-    </div>
-  );
+import { handleInitialData } from "../actions/shared";
+
+class App extends Component {
+	componentDidMount() {
+		this.props.dispatch(handleInitialData());
+	}
+
+	render() {
+		return (
+			<div>
+				<h1>Hello im here</h1>
+			</div>
+		);
+	}
 }
 
-export default App;
+export default connect()(App);
