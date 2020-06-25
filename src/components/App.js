@@ -6,9 +6,17 @@ import { handleInitialData } from "../actions/shared";
 
 import Dashboard from "./Dashboard";
 
-import Signin from './Signin'
+import Signin from "./Signin";
 
-import LoadingBar from 'react-redux-loading'
+import LoadingBar from "react-redux-loading";
+
+import NewQuestion from "./NewQuestion";
+
+import QuestionDetails from "./QuestionDetails";
+
+import Navbar from "./Navbar";
+
+import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {
 	componentDidMount() {
@@ -17,10 +25,17 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
-				<LoadingBar />
-				{this.props.loading === true ? <Signin /> : <Dashboard />}
-			</div>
+			<BrowserRouter>
+				<div>
+					<LoadingBar />
+				</div>
+				{this.props.loading === true
+					? <Signin /> :
+					<div>
+						<Route />
+				</div>
+				}
+			</BrowserRouter>
 		);
 	}
 }
