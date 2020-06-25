@@ -4,6 +4,10 @@ import { connect } from "react-redux";
 class Question extends Component {
 	render() {
 		const { question, author } = this.props;
+
+		if (question === null) {
+			return <div>Not exists</div>
+		}
 	
 		return (
 			<div>
