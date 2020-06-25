@@ -7,18 +7,10 @@ class QuestionDetails extends Component {
 		const { id } = this.props;
 		return (
 			<div>
-				<Question id={id} />
+				<Question id={this.props.match.id} detailed />
 			</div>
 		);
 	}
 }
 
-function mapStateToProps(props) {
-	const { id } = props.match.params;
-
-	return {
-		id,
-	};
-}
-
-export default connect(mapStateToProps)(QuestionDetails);
+export default connect()(QuestionDetails);
