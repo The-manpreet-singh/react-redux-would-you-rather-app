@@ -29,12 +29,15 @@ class App extends Component {
 				<div>
 					<LoadingBar />
 				</div>
-				{this.props.loading === true
-					? <Signin /> :
+				{this.props.loading === true ? (
+					<Signin />
+				) : (
 					<div>
-						<Route />
-				</div>
-				}
+						<Route path="/" exact component={Dashboard} />
+						<Route path="/question/:id" component={QuestionDetails} />
+						<Route path="/new" component={NewQuestion} />
+					</div>
+				)}
 			</BrowserRouter>
 		);
 	}
