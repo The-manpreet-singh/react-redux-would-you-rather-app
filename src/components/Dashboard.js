@@ -7,7 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
-import Question from './Question'
+import Question from "./Question";
 
 class Dashboard extends Component {
 	state = {
@@ -39,42 +39,37 @@ class Dashboard extends Component {
 					<Tab label="Unanswared Questions" />
 					<Tab label="Answared Questions" />
 				</Tabs>
-       
-				{data === 0 && 
+
+				{data === 0 && (
 					<ul>
 						{this.props.unansweredQuestionIds.map((id) => (
-							<li key={id}> <Question id={id} /> </li>
+							<li key={id}>
+								{" "}
+								<Question id={id} />{" "}
+							</li>
 						))}
 					</ul>
-				}
-				{data === 1 && 
+				)}
+				{data === 1 && (
 					<ul>
 						{this.props.answeredQuestionIds.map((id) => (
-							<li key={id}><Question id={id} /></li>
+							<li key={id}>
+								<Question id={id} />
+							</li>
 						))}
 					</ul>
-				}
-				
+				)}
 			</div>
 		);
 	}
 }
 
-function mapStateToProps({ questions, authedUser }) {
+function mapStateToProps({ questions, authedUser, users }) {
+	const answeredQuestionIds = Object.keys(users[authedUser].answers);
+	const unansweredQuestionIds = Object.keys(questions).filter((q) => !answeredQuestionIds.includes(q));
 	return {
-		// questionsIds: Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp),
-		answeredQuestionIds: Object.keys(questions).filter(
-			(q) =>
-				questions[q].optionOne.votes.some((c) => c === authedUser) ||
-				questions[q].optionTwo.votes.some((c) => c === authedUser)
-		),
-		unansweredQuestionIds: Object.keys(questions).filter(
-			(q) =>
-				!(
-					questions[q].optionOne.votes.some((c) => c === authedUser) ||
-					questions[q].optionTwo.votes.some((c) => c === authedUser)
-				)
-		),
+		answeredQuestionIds,
+		unansweredQuestionIds,
 	};
 }
 
