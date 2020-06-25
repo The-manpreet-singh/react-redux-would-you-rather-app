@@ -39,21 +39,22 @@ class Dashboard extends Component {
 					<Tab label="Unanswared Questions" />
 					<Tab label="Answared Questions" />
 				</Tabs>
-
-				{data === 0 && (
+       
+				{data === 0 && 
 					<ul>
 						{this.props.unansweredQuestionIds.map((id) => (
 							<li key={id}> <Question id={id} /> </li>
 						))}
 					</ul>
-				)}
-				{data === 1 && (
+				}
+				{data === 1 && 
 					<ul>
 						{this.props.answeredQuestionIds.map((id) => (
 							<li key={id}><Question id={id} /></li>
 						))}
 					</ul>
-				)}
+				}
+				
 			</div>
 		);
 	}
