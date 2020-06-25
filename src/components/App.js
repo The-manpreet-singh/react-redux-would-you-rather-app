@@ -28,6 +28,7 @@ class App extends Component {
 			<BrowserRouter>
 				<div>
 					<LoadingBar />
+					<Navbar />
 				</div>
 				{this.props.loading === true ? (
 					<Signin />
