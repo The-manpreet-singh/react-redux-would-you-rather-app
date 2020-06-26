@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleAddQuestionAnswer } from "../actions/questions";
 import { Link, withRouter } from "react-router-dom";
+import Error from "./Error";
 
 class Question extends Component {
 	state = {
@@ -25,7 +26,7 @@ class Question extends Component {
 		const { authedUserDetails, question, author, id, authedUser, detailed } = this.props;
 
 		if (question === null) {
-			return <div>Not exists</div>;
+			return <Error />;
 		}
 
 		return (
@@ -98,9 +99,8 @@ class Question extends Component {
 const mapStateToProps = ({ authedUser, questions, users }, { id }) => {
 	const question = questions[id];
 	const authedUserDetails = users[authedUser];
-	const author = users[question.author];
+	const author = question ? users[question.author] : "";
 	return {
-		authedUser,
 		question,
 		author,
 		authedUserDetails,

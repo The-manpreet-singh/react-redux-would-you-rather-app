@@ -7,7 +7,7 @@ class QuestionDetails extends Component {
 		const { id } = this.props;
 		return (
 			<div>
-				<Question id={this.props.match.id} detailed />
+				<Question id={id.match.params.id} detailed />
 			</div>
 		);
 	}
