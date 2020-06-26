@@ -44,8 +44,7 @@ class Dashboard extends Component {
 					<ul>
 						{this.props.unansweredQuestionIds.map((id) => (
 							<li key={id}>
-								{" "}
-								<Question id={id} />{" "}
+								<Question id={id} />
 							</li>
 						))}
 					</ul>

@@ -34,13 +34,37 @@ class Question extends Component {
 				<h5>author: {author.name}</h5>
 				<h5>time: {question.timestamp}</h5>
 				{authedUserDetails.answers[question.id] ? (
-					<span>
+					<div>
 						Selected:
-						{question.optionOne.votes.filter((v) => v === authedUser).length
-							? question.optionOne.text
-							: question.optionTwo.text}
 						{question[authedUserDetails.answers[question.id]].text}
-					</span>
+						{detailed && (
+							<div>
+								Results:
+								{question.optionOne.text}
+								<ul>
+									<li>Votes: {question.optionOne.votes.length}</li>
+									<li>
+										Percentage:
+										{(question.optionOne.votes.length /
+											(question.optionOne.votes.length + question.optionTwo.votes.length)) *
+											100}
+										%
+									</li>
+								</ul>
+								{question.optionTwo.text}
+								<ul>
+									<li>Votes: {question.optionTwo.votes.length}</li>
+									<li>
+										Percentage:
+										{(question.optionTwo.votes.length /
+											(question.optionOne.votes.length + question.optionTwo.votes.length)) *
+											100}
+										%
+									</li>
+								</ul>
+							</div>
+						)}
+					</div>
 				) : (
 					<span>
 						{detailed ? (
