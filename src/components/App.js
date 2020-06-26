@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import { connect } from "react-redux";
 
@@ -16,9 +16,11 @@ import QuestionDetails from "./QuestionDetails";
 
 import Navbar from "./Navbar";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Leaderboard from "./Leaderboard";
+
+import { Grid } from "semantic-ui-react";
 
 class App extends Component {
 	componentDidMount() {
@@ -32,15 +34,15 @@ class App extends Component {
 					<LoadingBar />
 				</div>
 				{this.props.loading === true ? (
-					<Signin />
+					<Route render={() => <Signin />} />
 				) : (
-					<div>
+					<Fragment>
 						<Navbar authedUser={this.props.authedUser} />
 						<Route path="/" exact component={Dashboard} />
 						<Route path="/questions/:id" component={QuestionDetails} />
 						<Route path="/add" component={NewQuestion} />
 						<Route path="/leaderboard" component={Leaderboard} />
-					</div>
+					</Fragment>
 				)}
 			</BrowserRouter>
 		);
