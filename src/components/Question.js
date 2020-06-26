@@ -23,7 +23,7 @@ class Question extends Component {
 		dispatch(handleAddQuestionAnswer(id, selected));
 	};
 	render() {
-		const { authedUserDetails, question, author, id, authedUser, detailed } = this.props;
+		const { authedUserDetails, question, author, id, detailed } = this.props;
 
 		if (question === null) {
 			return <Error />;
@@ -31,9 +31,19 @@ class Question extends Component {
 
 		return (
 			<div>
-				<h5>{detailed ? <span>{question.id}</span> : <Link to={`/questions/${id}`}>{question.id}</Link>}</h5>
+				<h5>
+					{detailed ? (
+						<span>
+							Would you rather <b>{question.optionOne.text}</b> or <b>{question.optionTwo.text}</b>
+						</span>
+					) : (
+						<Link to={`/questions/${id}`} style={{ textDecoration: "none" }}>
+							Would you rather <b>{question.optionOne.text}</b> or <b>{question.optionTwo.text}</b>
+						</Link>
+					)}
+				</h5>
 				<h5>author: {author.name}</h5>
-				<h5>time: {question.timestamp}</h5>
+				<h5>time: {new Date(question.timestamp).toLocaleDateString()}</h5>
 				{authedUserDetails.answers[question.id] ? (
 					<div>
 						Selected:

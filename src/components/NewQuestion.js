@@ -10,16 +10,16 @@ class NewQuestion extends Component {
 		home: false,
 	};
 
-	changehandler = (event, option) => {
-		const input = event.target.value;
+	changeHandler = (e, option) => {
+		const input = e.target.value;
 
 		this.setState(() => ({
 			[option]: input,
 		}));
 	};
 
-	submitHandler = (event) => {
-		event.preventDefault();
+	submitHandler = (e) => {
+		e.preventDefault();
 		const { optionOne, optionTwo } = this.state;
 		const { dispatch } = this.props;
 
@@ -42,8 +42,8 @@ class NewQuestion extends Component {
 		return (
 			<div>
 				<form onSubmit={this.submitHandler}>
-					<input type="text" onChange={(e) => this.handleChange("optionOne", e)} defaultValue={optionOne} />
-					<input type="text" onChange={(e) => this.handleChange("optionTwo", e)} defaultValue={optionTwo} />
+					<input type="text" onChange={(e) => this.changeHandler(e, "optionOne")} defaultValue={optionOne} />
+					<input type="text" onChange={(e) => this.changeHandler(e, "optionTwo")} defaultValue={optionTwo} />
 					<button type="submit">ADD</button>
 				</form>
 			</div>
