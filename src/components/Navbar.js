@@ -10,29 +10,26 @@ class Navbar extends Component {
 	};
 	render() {
 		return (
-			<nav>
-				<ul>
-					<li>
-						<NavLink to="/" exact activeClassName="active">
-							Home
-						</NavLink>
-					</li>
-					<li>
-						<NavLink to="/add" exact activeClassName="active">
-							New Question
-						</NavLink>
-					</li>
-					<li>
-						<NavLink to="/leaderboard" exact activeClassName="active">
-							Leaderboard
-						</NavLink>
-					</li>
-				</ul>
-				<span>
-					{this.props.authedUser}
-					<button onClick={this.logoutHandler}>Logout</button>
-				</span>
-			</nav>
+			<div className="ui pointing secondary menu">
+				<NavLink to="/" className="item" exact>
+					Home
+				</NavLink>
+
+				<NavLink to="/add" className="item" exact>
+					New Question
+				</NavLink>
+
+				<NavLink to="/leaderboard" className="item" exact>
+					Leaderboard
+				</NavLink>
+
+				<div className="right menu">
+					<span className="item">
+						{this.props.authedUser}
+						<button onClick={this.logoutHandler}>Logout</button>
+					</span>
+				</div>
+			</div>
 		);
 	}
 }
