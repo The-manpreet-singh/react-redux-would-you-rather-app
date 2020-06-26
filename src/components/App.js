@@ -30,7 +30,7 @@ class App extends Component {
 					<LoadingBar />
 				
 				</div>
-				{this.props.loading === true ? (
+				{this.props.loading === false ? (
 					<Signin />
 				) : (
 						<div>

@@ -48,7 +48,6 @@ class Signin extends Component {
 	}
 }
 
-export default Signin;
 function mapStateToProps({ users }) {
 	return {
 		users,
