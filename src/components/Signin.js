@@ -8,13 +8,13 @@ class Signin extends Component {
 		selectedUser: "",
 	};
 
-	handleUserSelect = (value) => {
+	userSelectHandler = (value) => {
 		this.setState(() => ({
 			selectedUser: value,
 		}));
 	};
 
-	handleSubmit = (e) => {
+	submitHandler = (e) => {
 		e.preventDefault();
 
 		const { dispatch } = this.props;
@@ -28,7 +28,7 @@ class Signin extends Component {
 			<div>
 				Sign In page
 				<br />
-				<select defaultValue="0" onChange={(e) => this.handleUserSelect(e.target.value)}>
+				<select defaultValue="0" onChange={(e) => this.userSelectHandler(e.target.value)}>
 					<option value="0" disabled>
 						Select User
 					</option>
@@ -40,7 +40,7 @@ class Signin extends Component {
 						))}
 				</select>
 				<br />
-				<button onClick={this.handleSubmit} disabled={!this.state.selectedUser}>
+				<button onClick={this.submitHandler} disabled={!this.state.selectedUser}>
 					Login
 				</button>
 			</div>
