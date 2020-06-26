@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-
 import Question from "./Question";
+import { Tab } from "semantic-ui-react";
 
 class Dashboard extends Component {
 	state = {
@@ -20,44 +15,42 @@ class Dashboard extends Component {
 
 	render() {
 		const { data } = this.state;
+		const panes = [
+			{
+				menuItem: "Unanswared Questions",
+				render: () => (
+					<Tab.Pane>
+						<ul>
+							{this.props.unansweredQuestionIds.map((id) => (
+								<li key={id}>
+									<Question id={id} />
+								</li>
+							))}
+						</ul>
+					</Tab.Pane>
+				),
+			},
+			{
+				menuItem: "Answared Questions",
+				render: () => (
+					<Tab.Pane>
+						{" "}
+						<ul>
+							{this.props.answeredQuestionIds.map((id) => (
+								<li key={id}>
+									<Question id={id} />
+								</li>
+							))}
+						</ul>
+					</Tab.Pane>
+				),
+			},
+		];
 
 		//console.log(data);
 		return (
 			<div>
-				<AppBar position="static">
-					<Toolbar>Dashboard</Toolbar>
-				</AppBar>
-
-				<Tabs
-					value={data}
-					onChange={this.changeHandler}
-					indicatorColor="primary"
-					textColor="primary"
-					centered
-					aria-label="full width tabs example"
-				>
-					<Tab label="Unanswared Questions" />
-					<Tab label="Answared Questions" />
-				</Tabs>
-
-				{data === 0 && (
-					<ul>
-						{this.props.unansweredQuestionIds.map((id) => (
-							<li key={id}>
-								<Question id={id} />
-							</li>
-						))}
-					</ul>
-				)}
-				{data === 1 && (
-					<ul>
-						{this.props.answeredQuestionIds.map((id) => (
-							<li key={id}>
-								<Question id={id} />
-							</li>
-						))}
-					</ul>
-				)}
+				<Tab panes={panes} />
 			</div>
 		);
 	}
