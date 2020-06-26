@@ -28,12 +28,13 @@ class App extends Component {
 			<BrowserRouter>
 				<div>
 					<LoadingBar />
-					<Navbar authedUser={this.props.authedUser} />
+				
 				</div>
 				{this.props.loading === true ? (
 					<Signin />
 				) : (
-					<div>
+						<div>
+						<Navbar authedUser={this.props.authedUser} />
 						<Route path="/" exact component={Dashboard} />
 						<Route path="/questions/:id" component={QuestionDetails} />
 						<Route path="/add" component={NewQuestion} />
