@@ -5,16 +5,8 @@ import Question from "./Question";
 import { Tab } from "semantic-ui-react";
 
 class Dashboard extends Component {
-	state = {
-		data: 0,
-	};
-
-	changeHandler = (e, data) => {
-		this.setState({ data });
-	};
 
 	render() {
-		const { data } = this.state;
 		const panes = [
 			{
 				menuItem: "Unanswared Questions",
@@ -34,7 +26,6 @@ class Dashboard extends Component {
 				menuItem: "Answared Questions",
 				render: () => (
 					<Tab.Pane>
-						{" "}
 						<ul>
 							{this.props.answeredQuestionIds.map((id) => (
 								<li key={id}>

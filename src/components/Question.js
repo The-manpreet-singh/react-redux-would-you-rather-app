@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { handleAddQuestionAnswer } from "../actions/questions";
 import { Link, withRouter } from "react-router-dom";
 import Error from "./Error";
+import { Card, Image, Feed, Button } from "semantic-ui-react";
 
 class Question extends Component {
 	state = {
@@ -31,76 +32,96 @@ class Question extends Component {
 
 		return (
 			<div>
-				<h5>
-					{detailed ? (
-						<span>
-							Would you rather <b>{question.optionOne.text}</b> or <b>{question.optionTwo.text}</b>
-						</span>
-					) : (
-						<Link to={`/questions/${id}`} style={{ textDecoration: "none" }}>
-							Would you rather <b>{question.optionOne.text}</b> or <b>{question.optionTwo.text}</b>
-						</Link>
-					)}
-				</h5>
-				<h5>author: {author.name}</h5>
-				<h5>time: {new Date(question.timestamp).toLocaleDateString()}</h5>
-				{authedUserDetails.answers[question.id] ? (
-					<div>
-						Selected:
-						{question[authedUserDetails.answers[question.id]].text}
-						{detailed && (
-							<div>
-								Results:
-								{question.optionOne.text}
-								<ul>
-									<li>Votes: {question.optionOne.votes.length}</li>
-									<li>
-										Percentage:
-										{(question.optionOne.votes.length /
-											(question.optionOne.votes.length + question.optionTwo.votes.length)) *
-											100}
-										%
-									</li>
-								</ul>
-								{question.optionTwo.text}
-								<ul>
-									<li>Votes: {question.optionTwo.votes.length}</li>
-									<li>
-										Percentage:
-										{(question.optionTwo.votes.length /
-											(question.optionOne.votes.length + question.optionTwo.votes.length)) *
-											100}
-										%
-									</li>
-								</ul>
-							</div>
-						)}
-					</div>
-				) : (
-					<span>
-						{detailed ? (
-							<form onSubmit={this.submitHandler}>
-								<input
-									type="radio"
-									name="gender"
-									id="optionone"
-									value="optionOne"
-									onChange={(e) => this.optionSelectHandler(e.currentTarget.value)}
-								/>
-								<label htmlFor="optionone">{question.optionOne.text}</label>
-								<input
-									type="radio"
-									name="gender"
-									id="optiontwo"
-									value="optionTwo"
-									onChange={(e) => this.optionSelectHandler(e.currentTarget.value)}
-								/>
-								<label htmlFor="optiontwo">{question.optionTwo.text}</label>
-								<button type="submit">Submit</button>
-							</form>
-						) : null}
-					</span>
-				)}
+				<Card>
+					<Card.Content>
+						<Card.Header> {author.name} asks:</Card.Header>
+					</Card.Content>
+					<Card.Content>
+						<Feed>
+							<Feed.Event>
+								<Feed.Label image={author.avatarURL} className="select-avatar" />
+								<Feed.Content>
+									<Feed.Date>time: {new Date(question.timestamp).toLocaleDateString()}</Feed.Date>
+
+									<Feed.Summary>
+										{detailed ? (
+											<span>
+												Would you rather
+												{authedUserDetails.answers[question.id] ? (
+													<div>
+														Selected:
+														{question[authedUserDetails.answers[question.id]].text}
+														{detailed && (
+															<div>
+																Results:
+																{question.optionOne.text}
+																<ul>
+																	<li>Votes: {question.optionOne.votes.length}</li>
+																	<li>
+																		Percentage:
+																		{(question.optionOne.votes.length /
+																			(question.optionOne.votes.length + question.optionTwo.votes.length)) *
+																			100}
+																		%
+																	</li>
+																</ul>
+																{question.optionTwo.text}
+																<ul>
+																	<li>Votes: {question.optionTwo.votes.length}</li>
+																	<li>
+																		Percentage:
+																		{(question.optionTwo.votes.length /
+																			(question.optionOne.votes.length + question.optionTwo.votes.length)) *
+																			100}
+																		%
+																	</li>
+																</ul>
+															</div>
+														)}
+													</div>
+												) : (
+													<span>
+														{detailed ? (
+															<form onSubmit={this.submitHandler}>
+																<input
+																	type="radio"
+																	name="gender"
+																	id="optionone"
+																	value="optionOne"
+																	onChange={(e) => this.optionSelectHandler(e.currentTarget.value)}
+																/>
+																<label htmlFor="optionone">{question.optionOne.text}</label>
+																<input
+																	type="radio"
+																	name="gender"
+																	id="optiontwo"
+																	value="optionTwo"
+																	onChange={(e) => this.optionSelectHandler(e.currentTarget.value)}
+																/>
+																<label htmlFor="optiontwo">{question.optionTwo.text}</label>
+																<button type="submit">Submit</button>
+															</form>
+														) : null}
+													</span>
+												)}
+											</span>
+										) : (
+											<Feed.Summary>
+												Would you rather...
+												<br /> <b>...be a {question.optionOne.text}</b> <br />
+												<Link to={`/questions/${id}`}>
+													<Button color="purple" style={{ marginTop: "10px" }}>
+														View Poll
+													</Button>
+												</Link>
+											</Feed.Summary>
+										)}
+									</Feed.Summary>
+								</Feed.Content>
+							</Feed.Event>
+						</Feed>
+					</Card.Content>
+				</Card>
 			</div>
 		);
 	}
