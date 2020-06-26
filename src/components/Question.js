@@ -79,7 +79,7 @@ class Question extends Component {
 				) : (
 					<span>
 						{detailed ? (
-							<form onSubmit={this.handleSubmit}>
+							<form onSubmit={this.submitHandler}>
 								<input
 									type="radio"
 									name="gender"
@@ -109,7 +109,7 @@ class Question extends Component {
 const mapStateToProps = ({ authedUser, questions, users }, { id }) => {
 	const question = questions[id];
 	const authedUserDetails = users[authedUser];
-	const author = question ? users[question.author] : "";
+	const author = questions[id] ? users[questions[id].author] : "";
 	return {
 		question,
 		author,
