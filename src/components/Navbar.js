@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar(props) {
 	return (
 		<nav>
 			<ul>
@@ -11,7 +11,7 @@ export default function Navbar() {
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/new" exact activeClassName="active">
+					<NavLink to="/add" exact activeClassName="active">
 						New Question
 					</NavLink>
 				</li>

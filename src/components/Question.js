@@ -30,7 +30,7 @@ class Question extends Component {
 
 		return (
 			<div>
-				<h5>{detailed ? <span>{question.id}</span> : <Link to={`/question/${id}`}>{question.id}</Link>}</h5>
+				<h5>{detailed ? <span>{question.id}</span> : <Link to={`/questions/${id}`}>{question.id}</Link>}</h5>
 				<h5>author: {author.name}</h5>
 				<h5>time: {question.timestamp}</h5>
 				{authedUserDetails.answers[question.id] ? (
