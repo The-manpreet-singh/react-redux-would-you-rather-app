@@ -18,6 +18,8 @@ import Navbar from "./Navbar";
 
 import { BrowserRouter, Route } from "react-router-dom";
 
+import Leaderboard from "./Leaderboard";
+
 class App extends Component {
 	componentDidMount() {
 		this.props.dispatch(handleInitialData());
@@ -28,16 +30,16 @@ class App extends Component {
 			<BrowserRouter>
 				<div>
 					<LoadingBar />
-				
 				</div>
 				{this.props.loading === true ? (
 					<Signin />
 				) : (
-						<div>
+					<div>
 						<Navbar authedUser={this.props.authedUser} />
 						<Route path="/" exact component={Dashboard} />
 						<Route path="/questions/:id" component={QuestionDetails} />
 						<Route path="/add" component={NewQuestion} />
+						<Route path="/leaderboard" component={Leaderboard} />
 					</div>
 				)}
 			</BrowserRouter>

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/questions";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 
 class NewQuestion extends Component {
 	state = {
 		optionOne: "",
-    optionTwo: "",
-    home:false
+		optionTwo: "",
+		home: false,
 	};
 
 	changehandler = (event, option) => {
@@ -27,17 +27,17 @@ class NewQuestion extends Component {
 
 		this.setState(() => ({
 			optionOne,
-      optionTwo,
-      home:true
+			optionTwo,
+			home: true,
 		}));
 	};
 
 	render() {
-    const { optionOne, optionTwo, home } = this.state;
-    
-    if (home) {
-      return <Redirect to='/' />
-    }
+		const { optionOne, optionTwo, home } = this.state;
+
+		if (home) {
+			return <Redirect to="/" />;
+		}
 
 		return (
 			<div>
@@ -51,4 +51,4 @@ class NewQuestion extends Component {
 	}
 }
 
-export default connect(NewQuestion);
+export default connect()(NewQuestion);
