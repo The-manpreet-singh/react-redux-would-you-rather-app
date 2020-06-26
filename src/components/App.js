@@ -28,7 +28,7 @@ class App extends Component {
 			<BrowserRouter>
 				<div>
 					<LoadingBar />
-					<Navbar authedUser={this.props.authedUser}/>
+					<Navbar authedUser={this.props.authedUser} />
 				</div>
 				{this.props.loading === true ? (
 					<Signin />
@@ -47,7 +47,7 @@ class App extends Component {
 function mapStateToProps({ authedUser }) {
 	return {
 		loading: authedUser === null,
-		authedUser
+		authedUser,
 	};
 }
 
