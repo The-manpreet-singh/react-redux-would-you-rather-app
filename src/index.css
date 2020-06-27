@@ -11,10 +11,14 @@ code {
 }
 
 .login-form {
-	margin: 50px auto;
-	z-index: 999;
 	width: 30%;
 	margin: 150px auto;
+	box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.7);
+	padding: 20px;
+}
+.new-question-form {
+	width: 30%;
+	margin: 70px auto;
 	box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.7);
 	padding: 20px;
 }
@@ -23,10 +27,18 @@ code {
 		width: 90%;
 		margin: 50px auto;
 	}
+	.new-question-form {
+		width: 90%;
+		margin: 20px auto;
+	}
 }
 @media (max-width: 900px) {
 	.login-form {
 		width: 70%;
 		margin: 100px auto;
+	}
+	.new-question-form {
+		width: 70%;
+		margin: 70px auto;
 	}
 }
