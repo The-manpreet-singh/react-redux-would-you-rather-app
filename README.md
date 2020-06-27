@@ -2,7 +2,17 @@
 
 ## project rules: https://review.udacity.com/#!/rubrics/1567/view
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This is the final assessment project for Udacity's React - Redux course. This app a web app that lets a user play the “Would You Rather?” questions answer game. In this project, I'm using react and redux functionality, improving the predictability of the application’s state; establish rules for getting and updating the store; and identify what state should live inside of Redux and what state should live inside of React components.
+
+## Features
+
+- login from with option to select user
+- option to logout any time
+- Tabs for answer or unanswer questions
+- option to create new questions
+- option to see the leaderboard
+
+# extra description for api
 
 The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the `_DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
 
