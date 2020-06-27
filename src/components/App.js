@@ -16,9 +16,11 @@ import QuestionDetails from "./QuestionDetails";
 
 import Navbar from "./Navbar";
 
-import { BrowserRouter, Route} from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import Leaderboard from "./Leaderboard";
+
+import Error from "./Error";
 
 class App extends Component {
 	componentDidMount() {
@@ -40,6 +42,7 @@ class App extends Component {
 						<Route path="/questions/:id" component={QuestionDetails} />
 						<Route path="/add" component={NewQuestion} />
 						<Route path="/leaderboard" component={Leaderboard} />
+						<Route component={Error} />
 					</Fragment>
 				)}
 			</BrowserRouter>
