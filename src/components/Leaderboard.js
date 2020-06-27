@@ -1,22 +1,40 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Card, Image, Feed, Button } from "semantic-ui-react";
 
 class Leaderboard extends Component {
 	render() {
-		const { authedUser,leaderboardData } = this.props;
+		const { authedUser, leaderboardData } = this.props;
 
 		return (
 			<div>
-				Leaderboard component
 				{leaderboardData
 					? leaderboardData.map((user) => (
-							<div key={user.id}>
-								{user.name}
-								<li>Answered Questions: {user.answeredQuestions}</li>
-								<li>Created Questions: {user.createdQuestions}</li>
-								<li>Total: {user.answeredQuestions + user.createdQuestions}</li>
-								<hr />
-							</div>
+							<Card key={user.id} style={{ margin: "20px auto", width: "70%" }}>
+								<Card.Content>
+									<Feed>
+										<Feed.Event>
+											<Feed.Label
+												style={{ margin: "5px auto", width: "20%" }}
+												image={user.avatarURL}
+												className="select-avatar"
+											/>
+											<Feed.Content style={{ margin: "10px 15px" }}>
+												<Feed.Summary style={{ padding: "3px" }}>{user.name}</Feed.Summary>
+												<Feed.Summary style={{ padding: "3px" }}>
+													Answered Questions: {user.answeredQuestions}
+												</Feed.Summary>
+												<Feed.Summary style={{ padding: "3px" }}>
+													Created Questions: {user.createdQuestions}
+												</Feed.Summary>
+												<Feed.Summary style={{ padding: "3px" }}>
+													Total: {user.answeredQuestions + user.createdQuestions}
+												</Feed.Summary>
+											</Feed.Content>
+										</Feed.Event>
+									</Feed>
+								</Card.Content>
+							</Card>
 					  ))
 					: null}
 			</div>
@@ -26,8 +44,8 @@ class Leaderboard extends Component {
 
 function mapStateToProps({ authedUser, users, questions }) {
 	const leaderboardData = Object.keys(users)
-    .map((user) => ({
-      id: user,
+		.map((user) => ({
+			id: user,
 			name: users[user].name,
 			avatarURL: users[user].avatarURL,
 			answeredQuestions: Object.keys(users[user].answers).length,
