@@ -16,7 +16,7 @@ import QuestionDetails from "./QuestionDetails";
 
 import Navbar from "./Navbar";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Leaderboard from "./Leaderboard";
 
@@ -38,11 +38,13 @@ class App extends Component {
 				) : (
 					<Fragment>
 						<Navbar authedUser={this.props.authedUser} />
-						<Route path="/" exact component={Dashboard} />
-						<Route path="/questions/:id" component={QuestionDetails} />
-						<Route path="/add" component={NewQuestion} />
-						<Route path="/leaderboard" component={Leaderboard} />
-						<Route component={Error} />
+						<Switch>
+							<Route path="/" exact component={Dashboard} />
+							<Route path="/questions/:id" component={QuestionDetails} />
+							<Route path="/add" component={NewQuestion} />
+							<Route path="/leaderboard" component={Leaderboard} />
+							<Route path="/error" component={Error} />
+						</Switch>
 					</Fragment>
 				)}
 			</BrowserRouter>
