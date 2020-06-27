@@ -32,18 +32,24 @@ class Question extends Component {
 
 		return (
 			<div>
-				<Card>
+				<Card style={{ margin: "20px auto", width: "90%" }}>
 					<Card.Content>
 						<Card.Header> {author.name} asks:</Card.Header>
 					</Card.Content>
 					<Card.Content>
 						<Feed>
 							<Feed.Event>
-								<Feed.Label image={author.avatarURL} className="select-avatar" />
-								<Feed.Content>
-									<Feed.Date>time: {new Date(question.timestamp).toLocaleDateString()}</Feed.Date>
+								<Feed.Label
+									style={{ margin: "5px auto", width: "20%" }}
+									image={author.avatarURL}
+									className="select-avatar"
+								/>
+								<Feed.Content style={{ margin: "10px 15px" }}>
+									<Feed.Date style={{ padding: "3px" }}>
+										time: {new Date(question.timestamp).toLocaleDateString()}
+									</Feed.Date>
 
-									<Feed.Summary>
+									<Feed.Summary style={{ padding: "3px" }}>
 										{detailed ? (
 											<span>
 												Would you rather

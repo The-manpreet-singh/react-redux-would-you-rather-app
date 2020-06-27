@@ -5,20 +5,17 @@ import Question from "./Question";
 import { Tab } from "semantic-ui-react";
 
 class Dashboard extends Component {
-
 	render() {
 		const panes = [
 			{
 				menuItem: "Unanswared Questions",
 				render: () => (
 					<Tab.Pane>
-						<ul>
-							{this.props.unansweredQuestionIds.map((id) => (
-								<li key={id}>
-									<Question id={id} />
-								</li>
-							))}
-						</ul>
+						{this.props.unansweredQuestionIds.map((id) => (
+							<div key={id}>
+								<Question id={id} />
+							</div>
+						))}
 					</Tab.Pane>
 				),
 			},
@@ -26,13 +23,11 @@ class Dashboard extends Component {
 				menuItem: "Answared Questions",
 				render: () => (
 					<Tab.Pane>
-						<ul>
-							{this.props.answeredQuestionIds.map((id) => (
-								<li key={id}>
-									<Question id={id} />
-								</li>
-							))}
-						</ul>
+						{this.props.answeredQuestionIds.map((id) => (
+							<div key={id}>
+								<Question id={id} />
+							</div>
+						))}
 					</Tab.Pane>
 				),
 			},
@@ -41,7 +36,7 @@ class Dashboard extends Component {
 		//console.log(data);
 		return (
 			<div>
-				<Tab panes={panes} />
+				<Tab panes={panes} style={{ margin: "20px auto", width: "70%" }} />
 			</div>
 		);
 	}
