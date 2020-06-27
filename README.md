@@ -4,6 +4,24 @@
 
 This is the final assessment project for Udacity's React - Redux course. This app a web app that lets a user play the “Would You Rather?” questions answer game. In this project, I'm using react and redux functionality, improving the predictability of the application’s state; establish rules for getting and updating the store; and identify what state should live inside of Redux and what state should live inside of React components.
 
+# Installation instructions
+
+Clone the repository, change directories, and use NPM/Yarn to install the dependencies.
+
+- `$ git clone https://github.com/The-manpreet-singh/react-redux-would-you-rather-app.git`
+- `$ cd react-redux-would-you-rather-app`
+- `$ npm install or yarn install`
+
+## Usage
+
+The project can be run with
+
+- `npm start` or `yarn start`
+
+The project can be viewed in the browser at
+
+- [http://localhost:3000](http://localhost:3000)
+
 ## Features
 
 - login from with option to select user
