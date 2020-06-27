@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
-
-import Error from "./Error";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import { handleAddQuestionAnswer } from "../actions/questions";
 import { Card, Feed, Button } from "semantic-ui-react";
 
@@ -27,8 +25,8 @@ class Question extends Component {
 	render() {
 		const { authedUserDetails, question, author, id, detailed } = this.props;
 
-		if (question === null) {
-			return <Error />;
+		if (!question) {
+			return <Redirect to="/404" />;
 		}
 
 		return (

@@ -9,6 +9,7 @@ class Navbar extends Component {
 		dispatch(setAuthedUser(null));
 	};
 	render() {
+		const { authedUser, users } = this.props;
 		return (
 			<div className="ui pointing secondary menu" style={{ width: "90%", margin: "20px auto" }}>
 				<NavLink to="/" className="item" exact>
@@ -24,7 +25,10 @@ class Navbar extends Component {
 				</NavLink>
 
 				<div className="right menu">
-					<span className="item">{this.props.authedUser}</span>
+					<span className="item">
+						<img className="ui avatar image" src={users[authedUser].avatarURL} alt="" />
+						{authedUser}
+					</span>
 					<button className="ui red button" onClick={this.logoutHandler}>
 						Logout
 					</button>
@@ -34,4 +38,11 @@ class Navbar extends Component {
 	}
 }
 
-export default connect()(Navbar);
+function mapStateToProps({ authedUser, users }) {
+	return {
+		authedUser,
+		users,
+	};
+}
+
+export default connect(mapStateToProps)(Navbar);
