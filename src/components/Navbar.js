@@ -10,7 +10,7 @@ class Navbar extends Component {
 	};
 	render() {
 		return (
-			<div className="ui pointing secondary menu">
+			<div className="ui pointing secondary menu" style={{ width: "90%", margin: "20px auto" }}>
 				<NavLink to="/" className="item" exact>
 					Home
 				</NavLink>
@@ -24,10 +24,10 @@ class Navbar extends Component {
 				</NavLink>
 
 				<div className="right menu">
-					<span className="item">
-						{this.props.authedUser}
-						<button onClick={this.logoutHandler}>Logout</button>
-					</span>
+					<span className="item">{this.props.authedUser}</span>
+					<button className="ui red button" onClick={this.logoutHandler}>
+						Logout
+					</button>
 				</div>
 			</div>
 		);
