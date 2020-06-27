@@ -25,24 +25,27 @@ class Signin extends Component {
 		const { users } = this.props;
 
 		return (
-			<div>
-				Sign In page
-				<br />
-				<select defaultValue="0" onChange={(e) => this.userSelectHandler(e.target.value)}>
-					<option value="0" disabled>
-						Select User
-					</option>
-					{users &&
-						Object.keys(users).map((user) => (
-							<option key={user} value={user}>
-								{users[user].name}
+			<div className="login-form">
+				<h2>Please login to continue</h2>
+				<form className="ui form">
+					<div className="field">
+						<select defaultValue="0" onChange={(e) => this.userSelectHandler(e.target.value)}>
+							<option value="0" disabled>
+								Select User
 							</option>
-						))}
-				</select>
-				<br />
-				<button onClick={this.submitHandler} disabled={!this.state.selectedUser}>
-					Login
-				</button>
+							{users &&
+								Object.keys(users).map((user) => (
+									<option key={user} value={user}>
+										{users[user].name}
+									</option>
+								))}
+						</select>
+					</div>
+
+					<button className="ui blue button" onClick={this.submitHandler} disabled={!this.state.selectedUser}>
+						Login
+					</button>
+				</form>
 			</div>
 		);
 	}
