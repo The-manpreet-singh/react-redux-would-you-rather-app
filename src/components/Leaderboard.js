@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card, Image, Feed, Button } from "semantic-ui-react";
+import { Card, Feed } from "semantic-ui-react";
 
 class Leaderboard extends Component {
 	render() {
-		const { authedUser, leaderboardData } = this.props;
+		const { leaderboardData } = this.props;
 
 		return (
 			<div>

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { handleAddQuestionAnswer } from "../actions/questions";
 import { Link, withRouter } from "react-router-dom";
 import Error from "./Error";
-import { Card, Image, Feed, Button } from "semantic-ui-react";
+import { Card, Feed, Button } from "semantic-ui-react";
 
 class Question extends Component {
 	state = {
@@ -54,11 +54,11 @@ class Question extends Component {
 											<span>
 												Would you rather
 												{authedUserDetails.answers[question.id] ? (
-													<div>
-														Selected:
+													<div style={{ padding: "10px" }}>
+														Choosed:
 														{question[authedUserDetails.answers[question.id]].text}
 														{detailed && (
-															<div>
+															<div style={{ padding: "10px" }}>
 																Results:
 																{question.optionOne.text}
 																<ul>
@@ -88,24 +88,36 @@ class Question extends Component {
 												) : (
 													<span>
 														{detailed ? (
-															<form onSubmit={this.submitHandler}>
-																<input
-																	type="radio"
-																	name="gender"
-																	id="optionone"
-																	value="optionOne"
-																	onChange={(e) => this.optionSelectHandler(e.currentTarget.value)}
-																/>
-																<label htmlFor="optionone">{question.optionOne.text}</label>
-																<input
-																	type="radio"
-																	name="gender"
-																	id="optiontwo"
-																	value="optionTwo"
-																	onChange={(e) => this.optionSelectHandler(e.currentTarget.value)}
-																/>
-																<label htmlFor="optiontwo">{question.optionTwo.text}</label>
-																<button type="submit">Submit</button>
+															<form className="ui form" onSubmit={this.submitHandler}>
+																<div style={{ padding: "10px" }}>
+																	<input
+																		type="radio"
+																		name="gender"
+																		id="optionone"
+																		value="optionOne"
+																		onChange={(e) => this.optionSelectHandler(e.currentTarget.value)}
+																	/>
+																	<label style={{ paddingLeft: "5px" }} htmlFor="optionone">
+																		{question.optionOne.text}
+																	</label>
+																</div>
+
+																<div style={{ padding: "10px" }}>
+																	<input
+																		type="radio"
+																		name="gender"
+																		id="optiontwo"
+																		value="optionTwo"
+																		onChange={(e) => this.optionSelectHandler(e.currentTarget.value)}
+																	/>
+																	<label style={{ paddingLeft: "5px" }} htmlFor="optiontwo">
+																		{question.optionTwo.text}
+																	</label>
+																</div>
+
+																<button className="ui blue button" type="submit">
+																	Submit
+																</button>
 															</form>
 														) : null}
 													</span>
@@ -114,7 +126,7 @@ class Question extends Component {
 										) : (
 											<Feed.Summary>
 												Would you rather...
-												<br /> <b>...be a {question.optionOne.text}</b> <br />
+												<br />
 												<Link to={`/questions/${id}`}>
 													<Button color="purple" style={{ marginTop: "10px" }}>
 														View Poll

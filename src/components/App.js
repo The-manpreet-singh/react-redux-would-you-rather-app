@@ -16,11 +16,9 @@ import QuestionDetails from "./QuestionDetails";
 
 import Navbar from "./Navbar";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route} from "react-router-dom";
 
 import Leaderboard from "./Leaderboard";
-
-import { Grid } from "semantic-ui-react";
 
 class App extends Component {
 	componentDidMount() {
